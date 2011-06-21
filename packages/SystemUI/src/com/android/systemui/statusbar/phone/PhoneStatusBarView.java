@@ -333,14 +333,36 @@ public class PhoneStatusBarView extends PanelBar {
     }
 
     public void updateBackgroundAlpha() {
+	boolean mIsHomeShowing = isLauncherShowing();
         if(mFadingPanel != null) {
             setBackgroundAlpha(1);
         } else if (isKeyguardEnabled()) {
+            setBackgroundAlpha(mAlpha < KEYGUARD_ALPHA ? KEYGUARD_ALPHA : mAlpha);
+      	} else if (mIsHomeShowing) {
             setBackgroundAlpha(mAlpha < KEYGUARD_ALPHA ? KEYGUARD_ALPHA : mAlpha);
         } else {
             removeCallbacks(mUpdateInHomeAlpha);
             postDelayed(mUpdateInHomeAlpha, 100);
         }
+    }
+
+    private boolean isLauncherShowing() {
+        ActivityManager am = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
+        final List<ActivityManager.RecentTaskInfo> recentTasks = am
+                .getRecentTasksForUser(
+                        1, ActivityManager.RECENT_WITH_EXCLUDED,
+                        UserHandle.CURRENT.getIdentifier());
+        if (recentTasks.size() > 0) {
+            ActivityManager.RecentTaskInfo recentInfo = recentTasks.get(0);
+            Intent intent = new Intent(recentInfo.baseIntent);
+            if (recentInfo.origActivity != null) {
+                intent.setComponent(recentInfo.origActivity);
+            }
+            if (isCurrentHomeActivity(intent.getComponent(), null)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean isCurrentHomeActivity(ComponentName component, ActivityInfo homeInfo) {
