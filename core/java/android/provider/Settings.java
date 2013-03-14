@@ -3028,6 +3028,18 @@ public final class Settings {
             "navigation_ring_targets_2",
         };
 
+        /**  
+         * Give MMS Notifications a breathing effect
+         * @hide
+         */
+        public static final String MMS_BREATH = "mms_breath";
+
+        /**  
+         * Give MMS Notifications a breathing effect
+         * @hide
+         */
+        public static final String MISSED_CALL_BREATH = "missed_call_breath";
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
