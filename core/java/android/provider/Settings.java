@@ -3040,6 +3040,12 @@ public final class Settings {
          */
         public static final String MISSED_CALL_BREATH = "missed_call_breath";
 
+        /**  
+         * Optionally open the Quick settings automatically when no other notifications to show in the drawer
+         * @hide
+         */
+        public static final String AUTO_OPEN_QUICKSETTINGS = "auto_open_quicksettings";
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
