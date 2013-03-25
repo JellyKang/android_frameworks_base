@@ -1169,10 +1169,12 @@ public class NetworkController extends BroadcastReceiver {
         if (customLabel != null && customLabel.trim().length() > 0) {
             combinedLabel = customLabel;
             mobileLabel = customLabel;
-            if (Settings.System.getInt(mContext.getContentResolver(),
+    	/**    
+        if (Settings.System.getInt(mContext.getContentResolver(),
                     Settings.System.NOTIFICATION_SHOW_WIFI_SSID, 0) == 0) {
                 wifiLabel = customLabel;
             }
+	**/
         }
 
         if (DEBUG) {
