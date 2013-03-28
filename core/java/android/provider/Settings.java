@@ -53,6 +53,7 @@ import android.util.Log;
 import android.view.WindowOrientationListener;
 
 import com.android.internal.widget.ILockSettings;
+import android.widget.Toast;
 
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -1010,6 +1011,22 @@ public final class Settings {
             return sNameValueCache.getStringForUser(resolver, name, userHandle);
         }
 
+	public static boolean getBoolean(ContentResolver cr, String name, boolean def) {
+            String v = getString(cr, name);
+            try {
+                if(v != null)
+                    return "1".equals(v);
+                else
+                    return def;
+            } catch (NumberFormatException e) {
+                return def;
+            }
+        }
+
+	public static boolean putBoolean(ContentResolver cr, String name, boolean value) {
+            return putString(cr, name, value ? "1" : "0");
+        }
+
         /**
          * Store a name/value pair into the database.
          * @param resolver to access the database with
@@ -1257,6 +1274,30 @@ public final class Settings {
                 return def;
             }
         }
+
+	/**
+	     * Long toast message
+	     *
+	     * @param context Application Context
+	     * @param msg Message to send
+	     */
+	    public static void msgLong(Context context, String msg) {
+		if (context != null && msg != null) {
+		    Toast.makeText(context, msg.trim(), Toast.LENGTH_LONG).show();
+		}
+	    }
+
+	    /**
+	     * Short toast message
+	     *
+	     * @param context Application Context
+	     * @param msg Message to send
+	     */
+	    public static void msgShort(Context context, String msg) {
+		if (context != null && msg != null) {
+		    Toast.makeText(context, msg.trim(), Toast.LENGTH_SHORT).show();
+		}
+	    }
 
         /**
          * Convenience function for retrieving a single system settings value
@@ -3343,6 +3384,13 @@ public final class Settings {
         public static final String WIFI_ON = Global.WIFI_ON;
 
         /**
+         * User configurable flag for determining if NavBar is enabled
+         *
+         * @hide
+         */
+        public static final String NAVIGATION_BAR_SHOW = "enable_nav_bar";
+
+        /**
          * @deprecated Use
          * {@link android.provider.Settings.Secure#WIFI_WATCHDOG_ACCEPTABLE_PACKET_LOSS_PERCENTAGE}
          * instead
@@ -3691,6 +3739,21 @@ public final class Settings {
             }
         }
 
+        public static boolean getBoolean(ContentResolver cr, String name, boolean def) {
+            String v = getString(cr, name);
+            try {
+                if(v != null)
+                    return "1".equals(v);
+                else
+                    return def;
+            } catch (NumberFormatException e) {
+                return def;
+            }
+        }
+
+	public static boolean putBoolean(ContentResolver cr, String name, boolean value) {
+            return putString(cr, name, value ? "1" : "0");
+        }
         /**
          * Convenience function for retrieving a single secure settings value
          * as an integer.  Note that internally setting values are always

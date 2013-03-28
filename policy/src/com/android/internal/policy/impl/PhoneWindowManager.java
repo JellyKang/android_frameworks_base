@@ -1225,6 +1225,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     public void setInitialDisplaySize(Display display, int width, int height, int density) {
         mDisplay = display;
+	ContentResolver resolver = mContext.getContentResolver();
 
         int shortSize, longSize;
         if (width > height) {
@@ -1290,8 +1291,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         }
 
         if (!mHasSystemNavBar) {
-            mHasNavigationBar = mContext.getResources().getBoolean(
+            final boolean showByDefault = mContext.getResources().getBoolean(
                     com.android.internal.R.bool.config_showNavigationBar);
+	    mHasNavigationBar = Settings.System.getBoolean(resolver, Settings.System.NAVIGATION_BAR_SHOW, showByDefault);
+
             // Allow a system property to override this. Used by the emulator.
             // See also hasNavigationBar().
             String navBarOverride = SystemProperties.get("qemu.hw.mainkeys");
