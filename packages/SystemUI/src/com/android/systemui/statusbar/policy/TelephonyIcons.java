@@ -100,6 +100,7 @@ class TelephonyIcons {
         };
 
     //3.5G
+/**
     static final int[][] DATA_H = {
             { R.drawable.stat_sys_data_connected_h,
               R.drawable.stat_sys_data_connected_h,
@@ -110,6 +111,18 @@ class TelephonyIcons {
               R.drawable.stat_sys_data_fully_connected_h,
               R.drawable.stat_sys_data_fully_connected_h }
     };
+**/
+	//Hack for 4g icons (this may be user configurable in the future)
+    static final int[][] DATA_H = {
+            { R.drawable.stat_sys_data_connected_4g,
+              R.drawable.stat_sys_data_connected_4g,
+              R.drawable.stat_sys_data_connected_4g,
+              R.drawable.stat_sys_data_connected_4g },
+            { R.drawable.stat_sys_data_fully_connected_4g,
+              R.drawable.stat_sys_data_fully_connected_4g,
+              R.drawable.stat_sys_data_fully_connected_4g,
+              R.drawable.stat_sys_data_fully_connected_4g }
+        };
 
     //HPSPA+
     static final int[][] DATA_HP = {
