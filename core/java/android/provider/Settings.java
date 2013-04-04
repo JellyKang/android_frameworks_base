@@ -3450,6 +3450,13 @@ public final class Settings {
         public static final String NAVIGATION_BAR_SHOW = "enable_nav_bar";
 
         /**
+         * Navigation bar alpha while in homescreen and lockscreen.
+         *
+         * @hide
+         */
+        public static final String STATUS_BAR_ALPHA = "status_bar_alpha";
+
+        /**
          * @deprecated Use
          * {@link android.provider.Settings.Secure#WIFI_WATCHDOG_ACCEPTABLE_PACKET_LOSS_PERCENTAGE}
          * instead
