@@ -1889,32 +1889,26 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         return getNonDecorDisplayHeight(fullWidth, fullHeight, rotation);
     }
 
-    @Override
     public int getWallpaperHeight(int rotation) {
         return getWallpaperTop(rotation)+getWallpaperBottom(rotation);
     }
 
-    @Override
     public int getWallpaperWidth(int rotation) {
         return getWallpaperLeft(rotation)+getWallpaperRight(rotation);
     }
 
-    @Override
     public int getWallpaperTop(int rotation) {
         return mUnrestrictedScreenTop;
     }
 
-    @Override
     public int getWallpaperLeft(int rotation) {
         return mUnrestrictedScreenLeft;
     }
 
-    @Override
     public int getWallpaperBottom(int rotation) {
         return mUnrestrictedScreenTop+mUnrestrictedScreenHeight;
     }
 
-    @Override
     public int getWallpaperRight(int rotation) {
         return mUnrestrictedScreenLeft+mUnrestrictedScreenWidth;
     }
