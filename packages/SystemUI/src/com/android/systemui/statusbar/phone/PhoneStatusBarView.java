@@ -370,6 +370,7 @@ public class PhoneStatusBarView extends PanelBar {
         @Override
         public void onChange(boolean selfChange) {
             updateSettings();
+	    updateBackgroundAlpha();
         }
     }
 
