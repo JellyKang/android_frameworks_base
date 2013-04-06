@@ -68,8 +68,6 @@ public class PhoneStatusBarView extends PanelBar {
 
     float mAlpha = 1;
 
-    public static final float KEYGUARD_ALPHA = 0.44f;
-
     private Runnable mUpdateInHomeAlpha = new Runnable() {
         @Override
         public void run() {
@@ -336,7 +334,7 @@ public class PhoneStatusBarView extends PanelBar {
         if(mFadingPanel != null) {
             setBackgroundAlpha(1);
         } else if (isKeyguardEnabled()) {
-            setBackgroundAlpha(mAlpha < KEYGUARD_ALPHA ? KEYGUARD_ALPHA : mAlpha);
+            setBackgroundAlpha(mAlpha < NavigationBarView.KEYGUARD_ALPHA ? NavigationBarView.KEYGUARD_ALPHA : mAlpha);
         } else {
             removeCallbacks(mUpdateInHomeAlpha);
             postDelayed(mUpdateInHomeAlpha, 100);
@@ -363,7 +361,7 @@ public class PhoneStatusBarView extends PanelBar {
             ContentResolver resolver = mContext.getContentResolver();
 
             resolver.registerContentObserver(
-                    Settings.System.getUriFor(Settings.System.STATUS_BAR_ALPHA), false, this);
+                    Settings.System.getUriFor(Settings.System.NAVIGATION_BAR_ALPHA), false, this);
             updateSettings();
         }
 
@@ -376,7 +374,7 @@ public class PhoneStatusBarView extends PanelBar {
     protected void updateSettings() {
         ContentResolver resolver = mContext.getContentResolver();
         mAlpha = Settings.System.getFloat(resolver,
-                Settings.System.STATUS_BAR_ALPHA,
+                Settings.System.NAVIGATION_BAR_ALPHA,
                 new Float(mContext.getResources().getInteger(R.integer.navigation_bar_transparency) / 255));
 
     }
