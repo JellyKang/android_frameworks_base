@@ -940,21 +940,6 @@ public final class PowerManagerService extends IPowerManager.Stub
             }
         }
     }
-    
-    @Override // Binder call
-    public void setKeyboardLight(boolean on, int key) {
-        if (key == 1) {
-            if (on)
-                mCapsLight.setColor(0x00ffffff);
-            else
-                mCapsLight.turnOff();
-        } else if (key == 2) {
-            if (on)
-                mFnLight.setColor(0x00ffffff);
-            else
-                mFnLight.turnOff();
-        }
-    }
 
     @Override // Binder call
     public void setKeyboardLight(boolean on, int key) {
