@@ -295,7 +295,7 @@ public final class PowerManager {
     final Handler mHandler;
 
     /**
-     * {@hide}
+     * @hide
      */
     public PowerManager(Context context, IPowerManager service, Handler handler) {
         mContext = context;
@@ -868,14 +868,13 @@ public final class PowerManager {
         } catch (RemoteException e) {
         }
     }
-    
     /**
      * sets the keyboard LED state
      *
      * @param on boolean state
      * @param key 1 for caps, 2 for fn
      *
-     * @hide
+     * {@hide}
      */
     public void setKeyboardLight(boolean on, int key)
     {

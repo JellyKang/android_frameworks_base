@@ -91,7 +91,7 @@ static jint init_native(JNIEnv *env, jobject clazz)
         devices->lights[LIGHT_INDEX_CAPS]
                 = get_device(module, LIGHT_ID_CAPS);
         devices->lights[LIGHT_INDEX_FUNC]
-                = get_device(module, LIGHT_ID_FUNC);
+                = get_device(module, LIGHT_ID_FUNC); 
     } else {
         memset(devices, 0, sizeof(Devices));
     }

@@ -23,6 +23,9 @@ import android.text.Spanned;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.KeyCharacterMap;
+import android.os.IPowerManager;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 
 /* For the hardware keyboard lights */
 import android.os.IPowerManager;
