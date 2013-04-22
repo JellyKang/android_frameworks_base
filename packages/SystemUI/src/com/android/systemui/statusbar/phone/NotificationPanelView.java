@@ -126,7 +126,7 @@ public class NotificationPanelView extends PanelView {
                             Settings.System.getInt(getContext().getContentResolver(),
                                     Settings.System.QS_QUICK_PULLDOWN, 0) == 2) {
                         flip = true;
-                    } else if (!mStatusBar.hasClearableNotifications() && Settings.System.getInt(getContext().getContentResolver(),
+                    } else if (!mStatusBar.hasAnyNotifications() && Settings.System.getInt(getContext().getContentResolver(),
                         Settings.System.QS_QUICK_PULLDOWN, 0) == 3) {
                         flip = true;
                     }
