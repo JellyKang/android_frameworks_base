@@ -22,12 +22,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.media.AudioManager;
 import android.media.IAudioService;
 import android.os.Handler;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemClock;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.SystemProperties;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -83,7 +87,7 @@ public class MusicTile extends QuickSettingsTile {
             @Override
             public boolean onLongClick(View v) {
                 sendMediaKeyEvent(KeyEvent.KEYCODE_MEDIA_NEXT);
-		Toast.makeText(getActivity(), "Next Song ...", Toast.LENGTH_SHORT).show();
+		Toast.makeText(mContext, "Next Song ...", Toast.LENGTH_SHORT).show();
                 return true;
             }
         };
