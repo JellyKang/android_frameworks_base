@@ -18,6 +18,8 @@
 
 package com.android.systemui.quicksettings;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.media.AudioManager;
@@ -125,7 +127,6 @@ public class MusicTile extends QuickSettingsTile {
         dispatchMediaKeyWithWakeLockToAudioService(key);
         dispatchMediaKeyWithWakeLockToAudioService(KeyEvent.changeAction(key, KeyEvent.ACTION_UP));
         mCurrentState = (isMusicActive() ? MEDIA_STATE_INACTIVE : MEDIA_STATE_ACTIVE);
-        updateTile();
     }
 
     void dispatchMediaKeyWithWakeLockToAudioService(KeyEvent event) {
