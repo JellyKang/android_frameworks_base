@@ -31,6 +31,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Toast;
 
 import com.android.systemui.R;
 import com.android.systemui.statusbar.phone.QuickSettingsContainerView;
@@ -72,6 +73,7 @@ public class MusicTile extends QuickSettingsTile {
             @Override
             public void onClick(View v) {
                 sendMediaKeyEvent(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
+		updateTile();
             }
         };
 
@@ -79,6 +81,7 @@ public class MusicTile extends QuickSettingsTile {
             @Override
             public boolean onLongClick(View v) {
                 sendMediaKeyEvent(KeyEvent.KEYCODE_MEDIA_NEXT);
+		Toast.makeText(getActivity(), "Next Song ...", Toast.LENGTH_SHORT).show();
                 return true;
             }
         };
