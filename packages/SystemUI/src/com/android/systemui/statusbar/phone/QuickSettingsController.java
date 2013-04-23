@@ -212,7 +212,7 @@ public class QuickSettingsController {
             } else if (tile.equals(TILE_MOBILEDATA) && mobileDataSupported) {
                 qs = new MobileNetworkTile(mContext, this);
             } else if (tile.equals(TILE_MUSIC)) {
-                qs = new MusicTile(mContext, this);
+                qs = new MusicTile(mContext, inflater, mContainerView, this, mHandler);
             } else if (tile.equals(TILE_LOCKSCREEN)) {
                 qs = new ToggleLockscreenTile(mContext, this);
             } else if (tile.equals(TILE_NETWORKMODE) && mobileDataSupported) {

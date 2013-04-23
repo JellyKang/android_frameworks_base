@@ -18,6 +18,7 @@
 
 package com.android.systemui.quicksettings;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.IAudioService;
@@ -25,6 +26,7 @@ import android.os.Handler;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemClock;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -61,7 +63,8 @@ public class MusicTile extends QuickSettingsTile {
     public MusicTile(Context context, LayoutInflater inflater,
             QuickSettingsContainerView container, final QuickSettingsController qsc,
             Handler handler) {
-        super(context, inflater, container, qsc);
+
+	super(context, qsc);
 
         mContext = context;
 
