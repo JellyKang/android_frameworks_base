@@ -3606,11 +3606,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 // case though.
                 mHideStatusBar = Settings.System.getInt(mContext.getContentResolver(),
                         Settings.System.HIDE_STATUSBAR, 0) == 1;
-                int expandedMode = Settings.System.getInt(mContext.getContentResolver(),
-                                        Settings.System.EXPANDED_DESKTOP_MODE, 0);
                 if (topIsFullscreen || (Settings.System.getInt(mContext.getContentResolver(),
-                                        Settings.System.EXPANDED_DESKTOP_STATE, 0) == 1 &&
-                                        (expandedMode == 2 || expandedMode == 3)) || mHideStatusBar) {
+                                        Settings.System.EXPANDED_DESKTOP_STATE, 0) == 1 && mHideStatusBar) {
                     if (DEBUG_LAYOUT) Log.v(TAG, "** HIDING status bar");
                     if (mStatusBar.hideLw(true)) {
                         changes |= FINISH_LAYOUT_REDO_LAYOUT;
