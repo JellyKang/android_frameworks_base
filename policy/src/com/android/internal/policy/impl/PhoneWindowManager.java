@@ -677,6 +677,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     Settings.System.HIDE_STATUSBAR), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.NAVIGATION_BAR_HEIGHT), false, this);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.NAVIGATION_BAR_WIDTH), false, this);
 
             updateSettings();
         }
@@ -1473,6 +1475,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 int  mNavigationBarHeight = Settings.System.getInt(resolver,
                         Settings.System.NAVIGATION_BAR_HEIGHT, 48);
 
+                int  mNavigationBarWidth = Settings.System.getInt(resolver,
+                        Settings.System.NAVIGATION_BAR_WIDTH, 42);
+
                 // Height of the navigation bar when presented horizontally at bottom
                 mNavigationBarHeightForRotation[mPortraitRotation] =
                 mNavigationBarHeightForRotation[mUpsideDownRotation] =
@@ -1481,12 +1486,15 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 mNavigationBarHeightForRotation[mSeascapeRotation] =
                         mNavigationBarHeight * DisplayMetrics.DENSITY_DEVICE / DisplayMetrics.DENSITY_DEFAULT;
 
-                // Width of the navigation bar when presented vertically along one side
+                // Width of the navigation bar when presented vertically along bottom
                 mNavigationBarWidthForRotation[mPortraitRotation] =
                 mNavigationBarWidthForRotation[mUpsideDownRotation] =
+                        (mNavigationBarHeight - 6) * DisplayMetrics.DENSITY_DEVICE / DisplayMetrics.DENSITY_DEFAULT;
+
+                // Width of the navigation bar when presented vertically along right/left side
                 mNavigationBarWidthForRotation[mLandscapeRotation] =
                 mNavigationBarWidthForRotation[mSeascapeRotation] =
-                        (mNavigationBarHeight - 6) * DisplayMetrics.DENSITY_DEVICE / DisplayMetrics.DENSITY_DEFAULT;
+                        mNavigationBarWidth * DisplayMetrics.DENSITY_DEVICE / DisplayMetrics.DENSITY_DEFAULT;
             }
         }
 
