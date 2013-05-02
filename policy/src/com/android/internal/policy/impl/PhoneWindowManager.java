@@ -1486,12 +1486,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 mNavigationBarHeightForRotation[mSeascapeRotation] =
                         mNavigationBarHeight * DisplayMetrics.DENSITY_DEVICE / DisplayMetrics.DENSITY_DEFAULT;
 
-                // Width of the navigation bar when presented vertically along bottom
+                // Width of the navigation bar when presented vertically along bottom/sides
                 mNavigationBarWidthForRotation[mPortraitRotation] =
                 mNavigationBarWidthForRotation[mUpsideDownRotation] =
-                        (mNavigationBarHeight - 6) * DisplayMetrics.DENSITY_DEVICE / DisplayMetrics.DENSITY_DEFAULT;
-
-                // Width of the navigation bar when presented vertically along right/left side
                 mNavigationBarWidthForRotation[mLandscapeRotation] =
                 mNavigationBarWidthForRotation[mSeascapeRotation] =
                         mNavigationBarWidth * DisplayMetrics.DENSITY_DEVICE / DisplayMetrics.DENSITY_DEFAULT;
