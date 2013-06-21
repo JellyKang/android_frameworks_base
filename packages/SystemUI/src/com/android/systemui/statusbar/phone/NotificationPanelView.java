@@ -128,7 +128,7 @@ public class NotificationPanelView extends PanelView {
                     } else if (event.getX(0) < getWidth() * (1.0f - STATUS_BAR_SETTINGS_LEFT_PERCENTAGE) &&
                             quickPulldownMode == 2) {
                         flip = true;
-                    } else if (!mStatusBar.hasAnyNotifications() && noNotificationPulldown) {
+                    } else if (!mStatusBar.hasClearableNotifications() && noNotificationPulldown) {
                         flip = true;
                     }
                     break;

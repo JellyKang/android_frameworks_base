@@ -1478,11 +1478,7 @@ public class PhoneStatusBar extends BaseStatusBar {
     }
 
     boolean hasClearableNotifications() {
-    	return mNotificationData.hasClearableItems();
-    }
-
-    boolean hasAnyNotifications() {
-	return mNotificationData.size() > 0;
+        return mNotificationData.hasClearableItems();
     }
 
     protected void updateNotificationShortcutsVisibility(boolean vis, boolean instant) {
