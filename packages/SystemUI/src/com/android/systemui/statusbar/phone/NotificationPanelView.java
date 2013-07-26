@@ -130,8 +130,6 @@ public class NotificationPanelView extends PanelView {
                         flip = true;
                     } else if (!mStatusBar.hasClearableNotifications() && noNotificationPulldown) {
                         flip = true;
-                    } else if (!mStatusBar.hasNotifications()) {
-                        flip = true;
                     }
                     break;
                 case MotionEvent.ACTION_MOVE:
