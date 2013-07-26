@@ -37,7 +37,6 @@ import com.android.systemui.statusbar.policy.PieController.Position;
 import com.android.systemui.statusbar.tablet.StatusBarPanel;
 import com.android.systemui.statusbar.WidgetView;
 
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManagerNative;
 import android.app.ActivityOptions;
@@ -1238,6 +1237,16 @@ public abstract class BaseStatusBar extends SystemUI implements
         updateExpansionStates();
         updateNotificationIcons();
 
+        if (entry.userCleared() && !mNotificationData.hasClearableItems()) {
+            // wait a bit to make the user aware of what's happening
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    animateCollapsePanels(CommandQueue.FLAG_EXCLUDE_NONE);
+                }
+            }, 225);
+        }
+
         return entry.notification;
     }
 
@@ -1839,8 +1848,6 @@ public abstract class BaseStatusBar extends SystemUI implements
                 refreshPieTriggers();
             }
         }
-
-        Activity.mPieOnTop = isPieEnabled() && ((Position.TOP.FLAG & mPieTriggerSlots & mPieTriggerMask) != 0);
     }
 
     // This should only be called, when is is clear that the pie controls are active
